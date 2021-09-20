@@ -14,11 +14,12 @@ import {
   IgtvIcon,
 } from '../../global/styles/icons';
 
-
 import { profiles } from '../../utils/profiles';
 
 import { styles } from './styles';
 import Posts from '../../components/templates/Posts';
+
+import { posts } from '../../utils/posts';
 
 export function Feed() {
   return (
@@ -52,7 +53,7 @@ export function Feed() {
         />
       </View>
 
-      <Posts />
+      <Posts posts={posts}/>
     </View>
   );
 }

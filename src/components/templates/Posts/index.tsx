@@ -1,11 +1,15 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+import { ItemProps } from '../../../@types/item';
 
 import { styles } from '../../../pages/Feed/styles';
-import { posts } from '../../../utils/posts';
 import Post from '../../organisms/Post';
 
-export default function Posts(){
+interface PostsProps{
+  posts: ItemProps[];
+}
+
+export default function Posts({ posts }: PostsProps){
    return (
       <FlatList
         data={posts}

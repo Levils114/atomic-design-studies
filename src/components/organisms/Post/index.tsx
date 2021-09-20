@@ -1,25 +1,14 @@
 import React from 'react';
-import { Image, ImageSourcePropType, Text, View } from 'react-native';
+import { ImageSourcePropType, View } from 'react-native';
 
 import PostOptions from './../../molecules/PostOptions';
 
 import { styles } from '../../../pages/Feed/styles';
 import PostImage from '../../atoms/PostImage';
 import PostHeader from '../../molecules/PostHeader';
-
-interface AvatarProps{
-   id: string;
-   name: string;
-   avatar: ImageSourcePropType;
-}
-
-interface ItemProps{
-   id: string;
-   likes: string;
-   cover: ImageSourcePropType;
-   description: string;
-   lastLiked: AvatarProps;
-}
+import PostAbout from '../../molecules/PostAbout';
+import PostDescription from '../../atoms/PostDescription';
+import { ItemProps } from '../../../@types/item';
 
 interface PostProps{
    item: ItemProps;
@@ -35,11 +24,12 @@ export default function Post({ item }: PostProps){
          <View style={styles.postFooter}>
             <PostOptions />
 
-            <View style={styles.postAbout}>
-               <Image source={item.lastLiked.avatar} style={styles.lastLiked} />
-               <Text style={styles.likes}>{item.likes}</Text>
-            </View>
-            <Text style={styles.description}>{item.description}</Text>
+            <PostAbout 
+               lastLikedUserAvatar={item.lastLiked.avatar}
+               likes={item.likes}
+            />
+
+            <PostDescription description={item.description}/>
          </View>
       </View>
    );
